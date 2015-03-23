@@ -1,0 +1,17 @@
+# Netbeans
+/workdir/table.gbr
+/workdir/tableLayers.gbr
+/workdir/example.gbr
+/nbproject/
+/build.xml
+/manifest.mf
+/build/
+/dist/
+
+# Eclipse
+/bin/
+/.settings/
+/.classpath
+/.project
+/target/
+/pom.xml
