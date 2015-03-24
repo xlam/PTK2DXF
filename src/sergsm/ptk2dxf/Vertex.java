@@ -28,4 +28,8 @@ class Vertex {
     public void setY(int y) {
         this.y = y;
     }
+
+    public boolean equals(Vertex v) {
+        return x == v.getX() && y == v.getY();
+    }
 }
