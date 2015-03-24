@@ -18,7 +18,7 @@ class Vertex {
     }
 
     public int getY() {
-        return x;
+        return y;
     }
 
     public void setX(int x) {
@@ -30,6 +30,6 @@ class Vertex {
     }
 
     public boolean equals(Vertex v) {
-        return x == v.getX() && y == v.getY();
+        return (x == v.getX()) && (y == v.getY());
     }
 }
