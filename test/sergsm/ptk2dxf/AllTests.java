@@ -5,6 +5,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+    VertexTest.class,
+    PolylineTest.class,
     ParserTest.class
 })
 public class AllTests {
