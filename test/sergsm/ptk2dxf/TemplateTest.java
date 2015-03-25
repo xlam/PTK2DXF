@@ -28,7 +28,7 @@ public class TemplateTest {
                 + "  0\n"
                 + "VERTEX\n"
                 + "  8\n"
-                + "Top_Layer\n"
+                + "Top_Mask\n"
                 + "  10\n"
                 + "10.0\n"
                 + "  20\n"

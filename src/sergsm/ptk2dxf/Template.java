@@ -32,7 +32,7 @@ public class Template {
             stringBuilder = new StringBuilder();
             BufferedReader r = new BufferedReader(new FileReader("./templates/" + filename + ".dtpl"));
             while (r.ready()) {
-                stringBuilder.append(r.readLine());
+                stringBuilder.append(r.readLine() + "\n");
             }
             r.close();
         } catch (IOException e) {}
