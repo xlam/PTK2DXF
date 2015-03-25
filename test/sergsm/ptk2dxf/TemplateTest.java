@@ -39,6 +39,7 @@ public class TemplateTest {
         Template t = new Template("vertex");
         t.set("POINT_X", "10.0");
         t.set("POINT_Y", "20.0");
+        System.out.println(expected);
         assertEquals(expected, t.toString());
     }
 

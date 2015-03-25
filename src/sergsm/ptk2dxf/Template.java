@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -14,6 +16,7 @@ public class Template {
     private String filename;
     private HashMap<String, String> vars = new HashMap();
     private StringBuilder stringBuilder = null;
+    private String result = null;
 
     public Template(String filename) {
         this.filename = filename;
@@ -26,6 +29,7 @@ public class Template {
     private void readTemplate() {
         if (stringBuilder != null) return;
         try {
+            stringBuilder = new StringBuilder();
             BufferedReader r = new BufferedReader(new FileReader("./templates/" + filename + ".dtpl"));
             while (r.ready()) {
                 stringBuilder.append(r.readLine());
@@ -38,22 +42,23 @@ public class Template {
         readTemplate();
         String result = stringBuilder.toString();
 
-        result = result.replaceAll("%%POINT_X%%", "10.0");
-        result = result.replaceAll("%%POINT_Y%%", "20.0");
+        Set<Map.Entry<String, String>> varsSet = vars.entrySet();
+        for (Map.Entry<String, String> var: varsSet) {
+            result = result.replaceAll("%%" +var.getKey() + "%%", var.getValue());
+        }
+        
+        this.result = result;
+        
+//        result = result.replaceAll("%%POINT_X%%", "10.0");
+//        result = result.replaceAll("%%POINT_Y%%", "20.0");
     }
 
     @Override
     public String toString() {
-        return ""
-                + "  0\n"
-                + "VERTEX\n"
-                + "  8\n"
-                + "Top_Layer\n"
-                + "  10\n"
-                + "10.0\n"
-                + "  20\n"
-                + "20.0\n"
-                + "  42\n"
-                + "0\n";
+        if (null == result) {
+            render();
+        }
+        System.out.println(result);
+        return result;
     }
 }

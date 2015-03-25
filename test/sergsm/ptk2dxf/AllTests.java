@@ -7,7 +7,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
     VertexTest.class,
     PolylineTest.class,
-    ParserTest.class
+    ParserTest.class,
+    TemplateTest.class
 })
 public class AllTests {
 

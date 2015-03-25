@@ -1,6 +1,7 @@
 # Netbeans
 /nbproject/
 /build.xml
+/nbbuild.xml
 /manifest.mf
 /build/
 /dist/
