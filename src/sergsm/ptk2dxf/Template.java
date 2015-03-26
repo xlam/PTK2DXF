@@ -46,11 +46,8 @@ public class Template {
         for (Map.Entry<String, String> var: varsSet) {
             result = result.replaceAll("%%" +var.getKey() + "%%", var.getValue());
         }
-        
+
         this.result = result;
-        
-//        result = result.replaceAll("%%POINT_X%%", "10.0");
-//        result = result.replaceAll("%%POINT_Y%%", "20.0");
     }
 
     @Override
@@ -58,7 +55,6 @@ public class Template {
         if (null == result) {
             render();
         }
-        System.out.println(result);
         return result;
     }
 }

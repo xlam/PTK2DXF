@@ -23,7 +23,7 @@ public class PolylineTest {
     }
 
     @Test
-    public void testAddAndRemove() {
+    public void testPolylineAddAndRemoveVertexes() {
         Polyline p = new Polyline();
         Vertex v = new Vertex(10, 10);
         assertEquals(0, p.size());
