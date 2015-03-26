@@ -1,9 +1,7 @@
 # Netbeans
-/workdir/table.gbr
-/workdir/tableLayers.gbr
-/workdir/example.gbr
 /nbproject/
 /build.xml
+/nbbuild.xml
 /manifest.mf
 /build/
 /dist/
@@ -15,3 +13,6 @@
 /.project
 /target/
 /pom.xml
+
+# Other
+/workdir/output.dxf
