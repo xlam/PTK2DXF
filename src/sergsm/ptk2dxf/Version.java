@@ -8,7 +8,7 @@ public class Version {
     private static final String VERSION_MAJOR = "1";
     private static final String VERSION_MINOR = "0";
     private static final String VERSION_BUILD = "0";
-    private static final String VERSION_STAGE = "RC1";
+    private static final String VERSION_STAGE = "";
 
     public static final String getVersion() {
         return
