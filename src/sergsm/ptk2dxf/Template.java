@@ -15,7 +15,7 @@ public class Template {
 
     private String filename;
     private HashMap<String, String> vars = new HashMap();
-    private StringBuilder stringBuilder = null;
+    private StringBuilder input = null;
     private String result = null;
 
     public Template(String filename) {
@@ -27,27 +27,35 @@ public class Template {
     }
 
     private void readTemplate() {
-        if (stringBuilder != null) return;
+        if (input != null) return;
         try {
-            stringBuilder = new StringBuilder();
-            BufferedReader r = new BufferedReader(new FileReader("./templates/" + filename + ".dtpl"));
+            input = new StringBuilder();
+            BufferedReader r = new BufferedReader(new FileReader(getFileName()));
             while (r.ready()) {
-                stringBuilder.append(r.readLine() + "\n");
+                input.append(r.readLine()).append("\n");
             }
             r.close();
         } catch (IOException e) {}
     }
 
+    private String getFileName() {
+        return PTKConst.TEMPLATE_DIR + filename + PTKConst.TEMPLATE_EXT;
+    }
+
     public void render() {
         readTemplate();
-        String result = stringBuilder.toString();
+        String result = input.toString();
 
         Set<Map.Entry<String, String>> varsSet = vars.entrySet();
         for (Map.Entry<String, String> var: varsSet) {
-            result = result.replaceAll("%%" +var.getKey() + "%%", var.getValue());
+            result = result.replaceAll(getPlaceholder(var.getKey()), var.getValue());
         }
 
         this.result = result;
+    }
+
+    private String getPlaceholder(String var) {
+        return PTKConst.VAR_LEFT_BRACKET + var + PTKConst.VAR_RIGHT_BRACKET;
     }
 
     @Override

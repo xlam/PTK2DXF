@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Parses CSV file into array of polylines
@@ -22,20 +21,19 @@ public class Parser {
     }
 
     public ArrayList parse() {
-        ArrayList polylines = new ArrayList();
 
-        List vertexes = new ArrayList();
+        ArrayList polylines = new ArrayList();
+        Polyline p = new Polyline();
+        int x;
+        int y;
+        String prevX = "";
+        String prevY = "";
+        linesCount = 0;
+        polylinesCount = 0;
+        errorLinesCount = 0;
 
         try {
             BufferedReader r = new BufferedReader(new FileReader(csvFileName));
-            linesCount = 0;
-            polylinesCount = 0;
-            int x;
-            int y;
-            String prevX = "";
-            String prevY = "";
-            Polyline p = new Polyline();
-            Vertex v;
             while (r.ready()) {
                 linesCount++;
                 String line = r.readLine();
