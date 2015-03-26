@@ -7,36 +7,40 @@ import java.util.ArrayList;
  * @author Sergey
  */
 class Polyline {
-    private ArrayList<Vertex> vertixes;
+    private ArrayList<Vertex> vertices;
 
     public Polyline() {
-        vertixes = new ArrayList();
+        vertices = new ArrayList();
     }
 
     public void add(Vertex v) {
-        vertixes.add(v);
+        vertices.add(v);
     }
 
     public void remove(Vertex v) {
-        vertixes.remove(v);
+        vertices.remove(v);
     }
 
     public Vertex get(int i) {
-        return vertixes.get(i);
+        return vertices.get(i);
     }
 
     public int size() {
-        return vertixes.size();
+        return vertices.size();
     }
 
     public boolean equals(Polyline p) {
-        if (vertixes.size() != p.size())
+        if (vertices.size() != p.size())
             return false;
-        for (int i=0; i < vertixes.size(); i++) {
-            Vertex v = vertixes.get(i);
+        for (int i=0; i < vertices.size(); i++) {
+            Vertex v = vertices.get(i);
             if (!(v.equals(p.get(i))))
                 return false;
         }
         return true;
+    }
+
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
     }
 }

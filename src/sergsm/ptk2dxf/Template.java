@@ -17,6 +17,7 @@ public class Template {
     private HashMap<String, String> vars = new HashMap();
     private StringBuilder input = null;
     private String result = null;
+    private boolean update = true;
 
     public Template(String filename) {
         this.filename = filename;
@@ -24,6 +25,7 @@ public class Template {
 
     public void set(String name, String value) {
         vars.put(name, value);
+        update = true;
     }
 
     private void readTemplate() {
@@ -52,6 +54,7 @@ public class Template {
         }
 
         this.result = result;
+        update = false;
     }
 
     private String getPlaceholder(String var) {
@@ -60,7 +63,7 @@ public class Template {
 
     @Override
     public String toString() {
-        if (null == result) {
+        if (null == result || update) {
             render();
         }
         return result;

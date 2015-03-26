@@ -13,3 +13,6 @@
 /.project
 /target/
 /pom.xml
+
+# Other
+/workdir/output.dxf
