@@ -41,7 +41,7 @@ public class Template {
     }
 
     private String getFileName() {
-        return PTKConst.TEMPLATE_DIR + filename + PTKConst.TEMPLATE_EXT;
+        return Const.TEMPLATE_DIR + filename + Const.TEMPLATE_EXT;
     }
 
     public void render() {
@@ -58,7 +58,7 @@ public class Template {
     }
 
     private String getPlaceholder(String var) {
-        return PTKConst.VAR_LEFT_BRACKET + var + PTKConst.VAR_RIGHT_BRACKET;
+        return Const.VAR_LEFT_BRACKET + var + Const.VAR_RIGHT_BRACKET;
     }
 
     @Override

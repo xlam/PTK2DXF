@@ -44,6 +44,7 @@ public class Parser {
                 String[] data = line.split(delimeter, 4);
 
                 if (!data[0].isEmpty()) {
+                    polylinesCount++;
                     p = new Polyline();
                     polylines.add(p);
                     prevX = "";
