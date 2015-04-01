@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  *
@@ -13,6 +14,7 @@ class Converter {
 
     private String filename;
     private Parser csvParser = new Parser();
+    private int scale = 20;
 
     public Converter(String filename) {
         this.filename = filename;
@@ -35,10 +37,8 @@ class Converter {
             for (Polyline polyline: polylines) {
                 String vertex_array = "";
                 for (Vertex vertex: polyline.getVertices()) {
-                    // TODO: int to string convertion and formatting
-                    //System.out.println(vertex.getX() + ", " + vertex.getY() + "\n");
-                    vertexTpl.set("POINT_X", "" + vertex.getX() + ".0");
-                    vertexTpl.set("POINT_Y", "" + vertex.getY() + ".0");
+                    vertexTpl.set("POINT_X", String.format(Locale.US, "%1$#.2f", (double)vertex.getX() / scale));
+                    vertexTpl.set("POINT_Y", String.format(Locale.US, "%1$#.2f", (double)vertex.getY() / scale));
                     vertex_array += vertexTpl.toString();
                 }
                 polylineTpl.set("VERTEX_ARRAY", vertex_array);
