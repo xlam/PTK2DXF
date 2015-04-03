@@ -32,4 +32,8 @@ class Vertex {
     public boolean equals(Vertex v) {
         return (x == v.getX()) && (y == v.getY());
     }
+
+    public String toString() {
+        return "[" + x + ";" + y + "]";
+    }
 }

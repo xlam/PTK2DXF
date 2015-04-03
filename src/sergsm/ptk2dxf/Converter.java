@@ -24,6 +24,7 @@ class Converter {
         csvParser.setCSVFileName(filename);
         ArrayList<Polyline> polylines = csvParser.parse();
         csvParser.printStats();
+        checkPolylines(polylines);
 
         try {
             FileWriter w = new FileWriter(new File(constructDXFFilename(filename)));
@@ -67,4 +68,13 @@ class Converter {
         return scale;
     }
 
+    public void checkPolylines(ArrayList<Polyline> polylines) {
+        for (Polyline pl: polylines) {
+            Vertex v1 = pl.get(0);
+            Vertex v2 = pl.get(pl.size()-1);
+            if (!v1.equals(v2)) {
+                System.out.println("WARNING! Polyline not closed at: " + v2.toString());
+            }
+        }
+    }
 }
