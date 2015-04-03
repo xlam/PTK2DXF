@@ -14,7 +14,7 @@ class Converter {
 
     private String filename;
     private Parser csvParser = new Parser();
-    private int scale = 20;
+    private int scale = 1;
 
     public Converter(String filename) {
         this.filename = filename;
@@ -57,6 +57,14 @@ class Converter {
         if (index < 0)
             return filename + Const.DXF_EXT;
         return filename.substring(0, index) + Const.DXF_EXT;
+    }
+
+    public void setScale(int scale) {
+        this.scale = Math.abs(scale);
+    }
+
+    public int getScale() {
+        return scale;
     }
 
 }
