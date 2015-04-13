@@ -37,7 +37,10 @@ public class Template {
                 input.append(r.readLine()).append("\n");
             }
             r.close();
-        } catch (IOException e) {}
+        } catch (IOException e) {
+            System.err.println("ERROR: Unable to read template '" + getFileName() + "'");
+            System.err.println("MESSAGE: " + e.getMessage());
+        }
     }
 
     private String getFileName() {
