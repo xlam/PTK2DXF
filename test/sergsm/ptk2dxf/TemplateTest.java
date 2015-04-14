@@ -28,7 +28,7 @@ public class TemplateTest {
                 + "  0\n"
                 + "VERTEX\n"
                 + "  8\n"
-                + "Top_Mask\n"
+                + "TOP_MASK\n"
                 + "  10\n"
                 + "10.0\n"
                 + "  20\n"
@@ -37,6 +37,7 @@ public class TemplateTest {
                 + "0\n";
 
         Template t = new Template("vertex");
+        t.set("LAYER", "TOP_MASK");
         t.set("POINT_X", "10.0");
         t.set("POINT_Y", "20.0");
         //System.out.println(expected);

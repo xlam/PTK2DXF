@@ -19,6 +19,9 @@ public class Main {
         }
 
         Converter c = new Converter(args[0]);
+        if (args.length > 1) {
+            c.setLayerName(args[1]);
+        }
         System.out.println("Converting [" + args[0] + "] -> [" + c.constructDXFFilename(args[0]) + "]...");
         c.convert();
         System.out.println("Converting finished.\n");

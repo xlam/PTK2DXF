@@ -53,7 +53,7 @@ LAYER
   0
 LAYER
   2
-Top_Mask
+%%LAYER%%
   70
 64
   62

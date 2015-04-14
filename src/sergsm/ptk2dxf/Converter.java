@@ -13,6 +13,7 @@ import java.util.Locale;
 class Converter {
 
     private String filename;
+    private String layerName = "LAYER1";
     private Parser csvParser = new Parser();
     private int scale = 1;
 
@@ -33,15 +34,18 @@ class Converter {
             Template vertexTpl = new Template("vertex");
             Template polylineTpl = new Template("polyline");
 
+            headerTpl.set("LAYER", layerName);
             w.write(headerTpl.toString());
 
             for (Polyline polyline: polylines) {
                 String vertex_array = "";
                 for (Vertex vertex: polyline.getVertices()) {
+                    vertexTpl.set("LAYER", layerName);
                     vertexTpl.set("POINT_X", String.format(Locale.US, "%1$#.2f", (double)vertex.getX() / scale));
                     vertexTpl.set("POINT_Y", String.format(Locale.US, "%1$#.2f", (double)vertex.getY() / scale));
                     vertex_array += vertexTpl.toString();
                 }
+                polylineTpl.set("LAYER", layerName);
                 polylineTpl.set("VERTEX_ARRAY", vertex_array);
                 w.write(polylineTpl.toString());
             }
@@ -58,6 +62,10 @@ class Converter {
         if (index < 0)
             return filename + Const.DXF_EXT;
         return filename.substring(0, index) + Const.DXF_EXT;
+    }
+
+    public void setLayerName(String layerName) {
+        this.layerName = layerName;
     }
 
     public void setScale(int scale) {
